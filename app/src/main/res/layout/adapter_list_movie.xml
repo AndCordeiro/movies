@@ -20,12 +20,10 @@
 
         <TextView
             android:id="@+id/tv_title"
+            style="@style/Base.TextAppearance.AppCompat.Title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center"
-            style="@style/Base.TextAppearance.AppCompat.Title"/>
-
-
+            android:gravity="center" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -66,7 +64,7 @@
                             style="@style/Base.TextAppearance.AppCompat.Body1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/list_movies_popularity"/>
+                            android:text="@string/list_movies_popularity" />
 
                         <TextView
                             android:id="@+id/tv_popularity"
@@ -77,7 +75,7 @@
                             android:layout_marginStart="3dp"
                             android:ellipsize="end"
                             android:maxLines="1"
-                            android:textColor="@color/md_black_1000"/>
+                            android:textColor="@color/md_black_1000" />
 
                     </LinearLayout>
 
@@ -90,7 +88,7 @@
                             style="@style/Base.TextAppearance.AppCompat.Body1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/list_movies_note"/>
+                            android:text="@string/list_movies_note" />
 
                         <TextView
                             android:id="@+id/tv_note"
@@ -101,7 +99,7 @@
                             android:layout_marginStart="3dp"
                             android:ellipsize="end"
                             android:maxLines="1"
-                            android:textColor="@color/md_black_1000"/>
+                            android:textColor="@color/md_black_1000" />
 
                     </LinearLayout>
 
@@ -114,7 +112,7 @@
                             style="@style/Base.TextAppearance.AppCompat.Body1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/list_movies_vote_count"/>
+                            android:text="@string/list_movies_vote_count" />
 
                         <TextView
                             android:id="@+id/tv_vote_count"
@@ -125,7 +123,7 @@
                             android:layout_marginStart="3dp"
                             android:ellipsize="end"
                             android:maxLines="1"
-                            android:textColor="@color/md_black_1000"/>
+                            android:textColor="@color/md_black_1000" />
 
                     </LinearLayout>
 
@@ -138,7 +136,7 @@
                             style="@style/Base.TextAppearance.AppCompat.Body1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="@string/list_movies_release"/>
+                            android:text="@string/list_movies_release" />
 
                         <TextView
                             android:id="@+id/tv_release"
@@ -149,7 +147,7 @@
                             android:layout_marginStart="3dp"
                             android:ellipsize="end"
                             android:maxLines="1"
-                            android:textColor="@color/md_black_1000"/>
+                            android:textColor="@color/md_black_1000" />
 
                     </LinearLayout>
                 </LinearLayout>

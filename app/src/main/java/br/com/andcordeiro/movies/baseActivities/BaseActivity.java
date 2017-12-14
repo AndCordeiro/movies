@@ -101,7 +101,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
     }
 
-    public void setIsAlertShow(boolean isShow){
+    public void setIsAlertShow(boolean isShow) {
         isAlertShow = isShow;
     }
 
@@ -177,6 +177,15 @@ public abstract class BaseActivity extends AppCompatActivity {
         alert.setMessage(msg);
         alert.setPositiveButton(positiveButton, onClickPositive);
         alert.setCancelable(cancelable);
+        alert.show();
+    }
+
+    protected void showAlert(
+            View view,
+            String msg) {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this, android.R.style.Theme_Black_NoTitleBar_Fullscreen);
+        alert.setView(view);
+        alert.setMessage(msg);
         alert.show();
     }
 

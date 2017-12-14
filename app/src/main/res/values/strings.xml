@@ -18,6 +18,7 @@
     <string name="list_movies_messenger_description">Click no filme para mais detalhes!</string>
     <string name="search">Pesquisar</string>
     <string name="search_name">Nome do Filme</string>
+    <string name="poster">Poster</string>
 
     <!-- Activity Detail -->
     <string name="detail_movie_overview">Sinopse: </string>

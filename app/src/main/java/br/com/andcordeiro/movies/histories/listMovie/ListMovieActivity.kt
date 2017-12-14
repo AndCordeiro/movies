@@ -8,7 +8,10 @@ import android.support.v4.widget.SwipeRefreshLayout
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.support.v7.widget.SearchView
+import android.view.LayoutInflater
 import android.view.Menu
+import android.widget.ImageView
+import android.widget.ProgressBar
 import br.com.andcordeiro.movies.R
 import br.com.andcordeiro.movies.baseActivities.BaseActivity
 import br.com.andcordeiro.movies.baseActivities.ToolbarActivity
@@ -17,6 +20,9 @@ import br.com.andcordeiro.movies.histories.detailMovie.DetailMovieActivity
 import br.com.andcordeiro.movies.histories.detailMovie.DetailMoviePresenter
 import br.com.andcordeiro.movies.system.Consts
 import br.com.andcordeiro.movies.system.extensions.find
+import br.com.andcordeiro.movies.system.extensions.gone
+import br.com.andcordeiro.movies.system.extensions.loadImage
+import br.com.andcordeiro.movies.system.extensions.show
 import br.com.andcordeiro.movies.system.mvp.PresenterHolder
 import br.com.andcordeiro.movies.system.util.DeviceUtils
 
@@ -24,6 +30,7 @@ class ListMovieActivity : ToolbarActivity(), ListMovieContract.View, ListMovieAd
 
     private val recyclerView by lazy { find<RecyclerView>(R.id.rv_list) }
     private val swipeRefreshLayout by lazy { find<SwipeRefreshLayout>(R.id.swipe_refresh) }
+    private val pb by lazy { find<ProgressBar>(R.id.pb_movies) }
 
     private var presenter: ListMoviePresenter? = null
     private var layoutManager: LinearLayoutManager? = null
@@ -102,6 +109,7 @@ class ListMovieActivity : ToolbarActivity(), ListMovieContract.View, ListMovieAd
             }
         })
         swipeRefreshLayout.setOnRefreshListener(this)
+        pb.show()
         loadMovies()
     }
 
@@ -110,6 +118,7 @@ class ListMovieActivity : ToolbarActivity(), ListMovieContract.View, ListMovieAd
             isSearch = false
             presenter!!.loadPopularityMovies(1)
         } else {
+            pb.gone()
             hideRefresh()
             showAlert(getString(R.string.title),
                     getString(R.string.list_movies_without_internet),
@@ -157,6 +166,7 @@ class ListMovieActivity : ToolbarActivity(), ListMovieContract.View, ListMovieAd
     override fun popularityMovies(popularityMovies: List<PopularityMovieEntity>) {
         adapter = ListMovieAdapter(popularityMovies as MutableList<PopularityMovieEntity>, this, "teste")
         recyclerView.adapter = adapter
+        pb.gone()
         hideRefresh()
     }
 
@@ -164,6 +174,7 @@ class ListMovieActivity : ToolbarActivity(), ListMovieContract.View, ListMovieAd
         adapter?.updateItens(popularityMovies)
         adapter?.notifyDataSetChanged()
         hideRefresh()
+        pb.gone()
         loading = false
     }
 
@@ -192,7 +203,13 @@ class ListMovieActivity : ToolbarActivity(), ListMovieContract.View, ListMovieAd
     }
 
     override fun onLongItemClick(data: PopularityMovieEntity) {
-        showSimpleAlert("teste", data.toString(), "ok", false)
+        val view = (getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater).inflate(R.layout.alert_poster, null)
+        val iv1 = view.find<ImageView>(R.id.iv_1)
+        val iv2 = view.find<ImageView>(R.id.iv_2)
+        iv1.loadImage(data.posterPath)
+        iv2.loadImage(data.backdropPath)
+        showAlert(view,
+                getString(R.string.poster))
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
