@@ -1,0 +1,35 @@
+<resources>
+    <string name="app_name">movies</string>
+
+    <!-- Show Alert -->
+    <string name="title">Atenção</string>
+    <string name="button_ok">OK</string>
+    <string name="button_cancel">Cancelar</string>
+    <string name="without_internet">Dispositivo não conectado a internet!</string>
+    <string name="list_movies_without_internet">Dispositivo não conectado a internet! Por favor, Conecte-se a internet e pressione OK ou pressione Cancel</string>
+
+    <!-- Activity List -->
+    <string name="list_movies_name">Filmes</string>
+    <string name="list_movies_release">Lançamento:</string>
+    <string name="list_movies_note">Nota:</string>
+    <string name="list_movies_vote_count">Votos:</string>
+    <string name="list_movies_popularity">Popularidade:</string>
+    <string name="list_movies_messenger_welcome">Bem vindo!</string>
+    <string name="list_movies_messenger_description">Click no filme para mais detalhes!</string>
+    <string name="search">Pesquisar</string>
+    <string name="search_name">Nome do Filme</string>
+
+    <!-- Activity Detail -->
+    <string name="detail_movie_overview">Sinopse: </string>
+    <string name="detail_movie_original_title">Titulo Original: </string>
+    <string name="detail_movie_original_language">Idioma Original: </string>
+    <string name="detail_movie_popularity">Popularidade: </string>
+    <string name="detail_movie_genre">Genero: </string>
+    <string name="detail_movie_vote_average">Nota: </string>
+    <string name="detail_movie_vote_count">Votos: </string>
+    <string name="detail_movie_release_date">Data de Lançamento: </string>
+    <string name="detail_movie_runtime">Tempo de Filme: </string>
+    <string name="detail_movie_budget">Despesas: </string>
+    <string name="detail_movie_revenue">Receita: </string>
+
+</resources>
