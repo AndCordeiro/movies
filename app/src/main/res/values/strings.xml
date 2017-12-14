@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">movies</string>
+    <string name="app_name">Filmes Populares</string>
 
     <!-- Show Alert -->
     <string name="title">Atenção</string>
