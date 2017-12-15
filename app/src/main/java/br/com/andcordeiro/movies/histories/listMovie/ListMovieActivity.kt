@@ -53,8 +53,9 @@ class ListMovieActivity : ToolbarActivity(), ListMovieContract.View, ListMovieAd
         initViews()
     }
 
-    override fun onResume() {
-        super.onResume()
+    override fun onDestroy() {
+        super.onDestroy()
+        presenter?.destroy()
     }
 
     private fun initViews() {
@@ -113,56 +114,6 @@ class ListMovieActivity : ToolbarActivity(), ListMovieContract.View, ListMovieAd
         loadMovies()
     }
 
-    private fun loadMovies(){
-        if (DeviceUtils.isConnected(this)) {
-            isSearch = false
-            presenter!!.loadPopularityMovies(1)
-        } else {
-            pb.gone()
-            hideRefresh()
-            showAlert(getString(R.string.title),
-                    getString(R.string.list_movies_without_internet),
-                    getString(R.string.button_ok),
-                    getString(R.string.button_cancel),
-                    { _, _ ->
-                        loadMovies()
-                    },{ _, _ ->
-                        if(adapter == null) {
-                            finish()
-                        }
-                    },
-                    false)
-        }
-    }
-
-    private fun loadSearchMovies(query: String?){
-        if (DeviceUtils.isConnected(this)) {
-            isSearch = true
-            presenter!!.searchPopulatityMovies(1, query!!)
-        } else {
-            hideRefresh()
-            showAlert(getString(R.string.title),
-                    getString(R.string.list_movies_without_internet),
-                    getString(R.string.button_ok),
-                    getString(R.string.button_cancel),
-                    { _, _ ->
-                        loadSearchMovies(query)
-                    },null,
-                    false)
-        }
-    }
-
-    private fun createPresenter(): ListMoviePresenter {
-        presenter = PresenterHolder.getInstance().getPresenter(ListMoviePresenter::class.java)
-        if (presenter == null) {
-            presenter = ListMoviePresenter(this)
-            PresenterHolder.getInstance().putPresenter(DetailMoviePresenter::class.java, presenter)
-        } else {
-            presenter?.setView(this)
-        }
-        return presenter as ListMoviePresenter
-    }
-
     override fun popularityMovies(popularityMovies: List<PopularityMovieEntity>) {
         adapter = ListMovieAdapter(popularityMovies as MutableList<PopularityMovieEntity>, this, "teste")
         recyclerView.adapter = adapter
@@ -189,11 +140,6 @@ class ListMovieActivity : ToolbarActivity(), ListMovieContract.View, ListMovieAd
         adapter?.notifyDataSetChanged()
         hideRefresh()
         loading = false
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        presenter?.destroy()
     }
 
     override fun onItemClick(data: PopularityMovieEntity) {
@@ -239,6 +185,56 @@ class ListMovieActivity : ToolbarActivity(), ListMovieContract.View, ListMovieAd
     override fun onRefresh() {
         showRefresh()
         loadMovies()
+    }
+
+    private fun loadMovies(){
+        if (DeviceUtils.isConnected(this)) {
+            isSearch = false
+            presenter!!.loadPopularityMovies(1)
+        } else {
+            pb.gone()
+            hideRefresh()
+            showAlert(getString(R.string.title),
+                    getString(R.string.list_movies_without_internet),
+                    getString(R.string.button_ok),
+                    getString(R.string.button_cancel),
+                    { _, _ ->
+                        loadMovies()
+                    },{ _, _ ->
+                if(adapter == null) {
+                    finish()
+                }
+            },
+                    false)
+        }
+    }
+
+    private fun loadSearchMovies(query: String?){
+        if (DeviceUtils.isConnected(this)) {
+            isSearch = true
+            presenter!!.searchPopulatityMovies(1, query!!)
+        } else {
+            hideRefresh()
+            showAlert(getString(R.string.title),
+                    getString(R.string.list_movies_without_internet),
+                    getString(R.string.button_ok),
+                    getString(R.string.button_cancel),
+                    { _, _ ->
+                        loadSearchMovies(query)
+                    },null,
+                    false)
+        }
+    }
+
+    private fun createPresenter(): ListMoviePresenter {
+        presenter = PresenterHolder.getInstance().getPresenter(ListMoviePresenter::class.java)
+        if (presenter == null) {
+            presenter = ListMoviePresenter(this)
+            PresenterHolder.getInstance().putPresenter(DetailMoviePresenter::class.java, presenter)
+        } else {
+            presenter?.setView(this)
+        }
+        return presenter as ListMoviePresenter
     }
 
     private fun hideRefresh() {

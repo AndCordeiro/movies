@@ -1,11 +1,8 @@
 package br.com.andcordeiro.movies.histories.detailMovie
 
-import android.annotation.SuppressLint
-import android.content.DialogInterface
 import android.os.Bundle
 import android.support.design.widget.CollapsingToolbarLayout
 import android.support.v7.widget.Toolbar
-import android.util.Log
 import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
@@ -92,7 +89,7 @@ class DetailMovieActivity : BaseActivity(), DetailMovieContract.View {
         tvOriginalTitle.text = movieEntity.originalTitle
         tvRuntime.text = movieEntity.runtime.toString()
         tvOriginalLanguage.text = movieEntity.originalLanguage.toString()
-        tvGenre.text = getNameGenres(movieEntity.genres)
+        tvGenre.text = GenreEntity.getGenresName(movieEntity.genres)
         tvPopularity.text = movieEntity.popularity.toString()
         tvReleaseDate.text = movieEntity.releaseDate
         tvVoteAverage.text = movieEntity.voteAverage.toString()
@@ -103,14 +100,4 @@ class DetailMovieActivity : BaseActivity(), DetailMovieContract.View {
         pb.hide()
     }
 
-    fun getNameGenres(genres: List<GenreEntity>?): String {
-        val nameGenres = StringBuilder()
-        genres?.forEach { genre: GenreEntity? ->
-            nameGenres.append(genre?.name).append(", ")
-        }
-        if (nameGenres.isNotEmpty()) {
-            nameGenres.deleteCharAt(nameGenres.length - 2)
-        }
-        return nameGenres.toString()
-    }
 }

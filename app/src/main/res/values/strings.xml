@@ -6,7 +6,7 @@
     <string name="button_ok">OK</string>
     <string name="button_cancel">Cancelar</string>
     <string name="without_internet">Dispositivo não conectado a internet!</string>
-    <string name="list_movies_without_internet">Dispositivo não conectado a internet! Por favor, Conecte-se a internet e pressione OK ou pressione Cancel</string>
+    <string name="list_movies_without_internet">Dispositivo não conectado a internet! Por favor, Conecte-se a internet e pressione OK ou pressione Cancelar</string>
 
     <!-- Activity List -->
     <string name="list_movies_name">Filmes</string>

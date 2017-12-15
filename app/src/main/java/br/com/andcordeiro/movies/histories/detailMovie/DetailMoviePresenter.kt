@@ -6,7 +6,7 @@ import rx.android.schedulers.AndroidSchedulers
 class DetailMoviePresenter(private var view : DetailMovieContract.View) : DetailMovieContract.Presenter {
 
     private var subscription: Subscription? = null
-    private val model by lazy { DetailMovieModel(view.context) }
+    private val model by lazy { DetailMovieModelImpl(view.context) }
 
     override fun create() {
 

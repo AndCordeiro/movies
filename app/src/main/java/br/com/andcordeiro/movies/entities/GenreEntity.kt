@@ -11,4 +11,18 @@ class GenreEntity : Serializable{
     override fun toString(): String {
         return "GenreEntity(id=$id, name=$name)"
     }
+
+
+    companion object {
+        fun getGenresName(genres: List<GenreEntity>?): String{
+            val nameGenres = StringBuilder()
+            genres?.forEach { genre: GenreEntity? ->
+                nameGenres.append(genre?.name).append(", ")
+            }
+            if (nameGenres.isNotEmpty()) {
+                nameGenres.deleteCharAt(nameGenres.length - 2)
+            }
+            return nameGenres.toString()
+        }
+    }
 }

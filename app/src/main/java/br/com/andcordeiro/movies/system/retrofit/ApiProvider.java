@@ -16,7 +16,7 @@ public class ApiProvider {
     private Context context;
     private String url = Consts.Url.URL_DEFAULT;
 
-    public ApiProvider(Context context){
+    public ApiProvider(Context context) {
         this.context = context;
         this.api = buildApi();
     }
@@ -25,22 +25,20 @@ public class ApiProvider {
         return build(Api.class, url);
     }
 
-    private <T> T build(final Class<T> apiClass, String apiHost){
+    private <T> T build(final Class<T> apiClass, String apiHost) {
 
         OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder();
         clientBuilder.addNetworkInterceptor(chain -> {
             Request original = chain.request();
             Request request = original.newBuilder()
-                    .header("Accept-Language", "")
                     .method(original.method(), original.body())
                     .build();
             return chain.proceed(request);
         });
 
-
-            HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
-            interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
-            clientBuilder.addInterceptor(interceptor);
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+        clientBuilder.addInterceptor(interceptor);
 
         try {
             return new Retrofit.Builder()
@@ -54,7 +52,6 @@ public class ApiProvider {
             i.printStackTrace();
             return null;
         }
-
     }
 
     public Api getApi() {

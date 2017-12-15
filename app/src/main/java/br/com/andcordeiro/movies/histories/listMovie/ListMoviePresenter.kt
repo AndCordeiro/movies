@@ -9,7 +9,7 @@ class ListMoviePresenter(private var view : ListMovieContract.View) : ListMovieC
     private var subscriptionMoviesUpdate: Subscription? = null
     private var subscriptionSearchMovies: Subscription? = null
     private var subscriptionSearchMoviesUpdate: Subscription? = null
-    private val model by lazy { ListMovieModel(view.context) }
+    private val model by lazy { ListMovieModelImpl(view.context) }
 
     override fun create() {
 

@@ -32,7 +32,6 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 
     compile(
-            "com.google.dagger:dagger:$version_dagger",
             "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
             "com.android.support:appcompat-v7:$version_support_library",
             "com.android.support:design:$version_support_library",
