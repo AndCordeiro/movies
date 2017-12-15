@@ -15,7 +15,7 @@ https://www.themoviedb.org/
 - Open with Android Studio
 - Run Application!
 
-## Dvelopment language
+## Development language
 
 - Java
 - Kotlin
