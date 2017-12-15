@@ -1,10 +1,11 @@
 # Movies
-Aplicativo para Teste
+
+Test application.
+Consume the API The Movie DB, search the movies with more popularity.
 
 ## Prerequisites
 
 - Android Studio 3.0.1
-
 
 ## Get started
 
