@@ -3,13 +3,7 @@
 buildscript {
 
     ext.version_support_library = "26.1.0"
-    ext.version_support_annotations = "25.3.1"
     ext.version_retrofit = "2.0.2"
-    ext.version_butterknife = "8.0.1"
-    ext.version_espresso = "2.2.2"
-    ext.version_mockito = "1.10.19"
-    ext.version_eventbus = "3.0.0"
-    ext.version_dagger = "2.8"
     ext.kotlin_version = '1.2.0'
 
     repositories {
